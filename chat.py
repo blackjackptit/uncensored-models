@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 Interactive Chat Interface for Uncensored Models
 ================================================
@@ -29,6 +30,12 @@ Requirements:
 
 import sys
 import subprocess
+
+# Set UTF-8 encoding for Windows console
+if sys.platform == 'win32':
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 from config import MODELS, SEPARATOR
 from ollama_utils import (
     check_ollama_running,
@@ -49,7 +56,6 @@ def select_model():
         If user enters an invalid choice, defaults to the first model
         in the MODELS list (typically dolphin-mistral).
     """
-    """Let user select a model"""
     print(f"\n{SEPARATOR}")
     print("AVAILABLE UNCENSORED MODELS")
     print(SEPARATOR)
