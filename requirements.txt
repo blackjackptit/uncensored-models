@@ -1,0 +1,2 @@
+# No Python packages required - uses Ollama directly
+# Ollama must be installed from https://ollama.ai
