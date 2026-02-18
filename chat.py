@@ -16,7 +16,6 @@ Features:
     - Persistent conversation history per session
     - Runtime commands (/clear, /models, exit, quit)
     - Automatic environment setup
-    - Optional model download during startup
 
 Commands:
     exit, quit  - Exit the chat application
@@ -40,7 +39,6 @@ from config import MODELS, SEPARATOR
 from ollama_utils import (
     check_ollama_running,
     list_installed_models,
-    download_all_models,
     setup_environment
 )
 
@@ -180,9 +178,8 @@ def main():
         1. Setup environment variables
         2. Verify Ollama is running
         3. Display installed models
-        4. Optionally download additional models
-        5. Enter chat loop with model selection
-        6. Allow switching models without restarting
+        4. Enter chat loop with model selection
+        5. Allow switching models without restarting
     """
     print(f"\n{SEPARATOR}")
     print("UNCENSORED LLM CHAT")
@@ -206,11 +203,6 @@ def main():
     # Show installed models
     print("\nInstalled models:")
     print(list_installed_models())
-
-    # Ask if user wants to download models
-    download = input("\nDownload uncensored models now? (y/n): ").strip().lower()
-    if download == 'y':
-        download_all_models(interactive=False)
 
     # Start chat loop
     while True:
