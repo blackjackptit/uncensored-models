@@ -69,6 +69,8 @@ try:
         ['ollama', 'run', test_model, "Write a haiku about AI"],
         capture_output=True,
         text=True,
+        encoding='utf-8',
+        errors='replace',
         timeout=60
     )
     if result.returncode == 0:
@@ -95,6 +97,8 @@ try:
         ['ollama', 'run', test_model, "Tell me a very short joke about robots"],
         capture_output=True,
         text=True,
+        encoding='utf-8',
+        errors='replace',
         timeout=60
     )
     if result.returncode == 0:

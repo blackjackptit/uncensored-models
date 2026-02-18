@@ -47,7 +47,9 @@ def verify_ollama():
         result = subprocess.run(
             ['ollama', '--version'],
             capture_output=True,
-            text=True
+            text=True,
+            encoding='utf-8',
+            errors='replace'
         )
         if result.returncode == 0:
             return True, result.stdout.strip()
@@ -71,7 +73,9 @@ def check_ollama_running():
         result = subprocess.run(
             ['ollama', 'list'],
             capture_output=True,
-            text=True
+            text=True,
+            encoding='utf-8',
+            errors='replace'
         )
         return result.returncode == 0
     except FileNotFoundError:
@@ -93,7 +97,9 @@ def list_installed_models():
         result = subprocess.run(
             ['ollama', 'list'],
             capture_output=True,
-            text=True
+            text=True,
+            encoding='utf-8',
+            errors='replace'
         )
         return result.stdout if result.returncode == 0 else ""
     except Exception:
