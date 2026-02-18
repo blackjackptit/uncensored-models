@@ -1,136 +1,176 @@
-# Uncensored LLM Chat
+# Uncensored Models
 
-A modular command-line chat interface for uncensored language models using Ollama.
-
-## Quick Start
-
-```bash
-# 1. Install Ollama from https://ollama.ai
-# 2. Run setup
-python setup_ollama.py
-# 3. Start chatting
-python chat.py
-```
+A Python-based chat interface for running uncensored AI models locally using Ollama. This project provides an easy-to-use command-line interface for interacting with various uncensored language models.
 
 ## Features
 
-- 4 uncensored models: Dolphin Mistral, Dolphin Llama3, WizardLM, Nous Hermes
-- Interactive CLI with conversation history
-- Runtime model switching
-- Modular, maintainable codebase
-
-## Installation
-
-### Requirements
-- Python 3.7+
-- Ollama ([download](https://ollama.ai))
-- ~20 GB disk space for all models
-
-### Setup
-
-1. **Install Ollama**
-   Download from [https://ollama.ai](https://ollama.ai) and run the installer.
-
-2. **(Optional) Configure Custom Model Directory**
-
-   To store models in `D:\llm-models`, set the environment variable:
-
-   **PowerShell (Administrator):**
-   ```powershell
-   [System.Environment]::SetEnvironmentVariable("OLLAMA_MODELS", "D:\llm-models", "Machine")
-   ```
-
-   **Command Prompt (Administrator):**
-   ```cmd
-   setx OLLAMA_MODELS "D:\llm-models" /M
-   ```
-
-   Then restart Ollama service (end process in Task Manager, it will auto-restart).
-
-3. **Run Setup Script**
-   ```bash
-   python setup_ollama.py
-   ```
-   This will download all models and configure the environment.
-
-## Usage
-
-### Start Chat
-```bash
-python chat.py
-```
-
-### Chat Commands
-- `exit` or `quit` - Exit the application
-- `/clear` - Clear conversation history
-- `/models` - Switch to a different model
-
-### Run Tests
-```bash
-python test_chat.py
-```
+- **Interactive Chat Interface**: Clean, user-friendly CLI for conversing with AI models
+- **Multiple Model Support**: Easy switching between different uncensored models
+- **Conversation History**: Maintains context throughout the chat session
+- **Automated Setup**: One-command setup wizard to get started quickly
+- **Local & Private**: All models run locally on your machine
+- **Modular Architecture**: Clean, maintainable codebase following DRY principles
 
 ## Available Models
 
-| Model | Size | Description |
-|-------|------|-------------|
-| Dolphin Mistral 7B | ~4 GB | Balanced quality and speed |
-| Dolphin Llama3 8B | ~5 GB | High quality responses |
-| WizardLM Uncensored 7B | ~7 GB | Instruction-tuned |
-| Nous Hermes Uncensored | ~4 GB | Creative responses |
+- **Dolphin Mistral 7B** - Balanced quality and speed
+- **Dolphin Llama3 8B** - High quality responses
+- **WizardLM Uncensored 7B** - Instruction-tuned for better task following
+- **Nous Hermes Uncensored** - Creative and conversational
 
-**Storage**: Models are stored in `D:\llm-models` (configurable)
-**RAM Requirements**: 8-16 GB per model
+## Prerequisites
 
-## Troubleshooting
+- **Python 3.7+** - [Download Python](https://www.python.org/downloads/)
+- **Ollama** - [Install Ollama](https://ollama.ai)
+- **8-16 GB RAM** recommended for smooth model performance
+- **10+ GB disk space** for model storage
 
-**Ollama not found**
-- Ensure Ollama is installed and PATH is configured
-- Restart terminal after installation
+## Installation
 
-**Models not downloading to custom directory**
-- Verify OLLAMA_MODELS environment variable is set
-- Restart Ollama service after setting the variable
+1. Clone this repository:
+\`\`\`bash
+git clone https://github.com/blackjackptit/uncensored-models.git
+cd uncensored-models
+\`\`\`
 
-**Out of memory errors**
-- Close other applications
-- Use smaller models (Dolphin Mistral)
+2. Install Ollama if you haven't already:
+   - Visit https://ollama.ai and follow the installation instructions for your OS
 
-**Import errors**
-- Ensure all .py files are in the same directory
-- Check Python version is 3.7+
+3. Run the setup wizard:
+\`\`\`bash
+python setup_ollama.py
+\`\`\`
+
+The setup wizard will:
+- Configure the model storage directory
+- Download your selected models
+- Verify the installation
+
+## Usage
+
+### Start Chatting
+
+\`\`\`bash
+python chat.py
+\`\`\`
+
+### Chat Commands
+
+While in the chat interface, you can use these commands:
+
+- \`/clear\` - Clear conversation history
+- \`/model\` - Switch to a different model
+- \`/exit\` or \`/quit\` - Exit the chat
+
+### Running Tests
+
+\`\`\`bash
+python test_chat.py
+\`\`\`
 
 ## Project Structure
 
-```
+\`\`\`
 uncensored-models/
-├── config.py           # Configuration
-├── ollama_utils.py     # Shared utilities
-├── setup_ollama.py     # Setup script
-├── chat.py             # Chat interface
-├── test_chat.py        # Testing suite
-├── README.md           # This file
-└── docs/
-    └── DEVELOPMENT.md  # Developer documentation
-```
+├── config.py           # Configuration settings and model definitions
+├── ollama_utils.py     # Shared utility functions for Ollama operations
+├── setup_ollama.py     # One-time setup wizard
+├── chat.py             # Interactive chat application
+├── test_chat.py        # Automated test suite
+├── requirements.txt    # Python dependencies (minimal)
+├── docs/
+│   └── DEVELOPMENT.md  # Developer documentation
+└── README.md           # This file
+\`\`\`
 
-## For Developers
+## Configuration
 
-See [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md) for:
-- Architecture and design decisions
-- Adding new models and features
-- Code style guidelines
-- Contributing guidelines
+Edit \`config.py\` to customize:
 
-## Responsible Use
+- **MODEL_DIR**: Where models are stored (default: \`D:/llm-models\`)
+- **MODELS**: Add or remove models from the available list
 
-These models have reduced content filtering compared to mainstream models. Intended for:
-- Creative writing and roleplay
-- Research and educational purposes
-- Testing and development
+Example of adding a new model:
+\`\`\`python
+MODELS.append({
+    'name': 'model-identifier',
+    'description': 'Display Name',
+    'details': 'Brief description'
+})
+\`\`\`
 
-Use responsibly and in accordance with local laws and regulations.
+## Development
+
+For detailed development documentation, see [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
+
+### Quick Start for Developers
+
+1. Read the architecture overview in \`docs/DEVELOPMENT.md\`
+2. Follow the code style guidelines (Google-style docstrings)
+3. Test your changes with \`python test_chat.py\`
+4. One feature per commit with descriptive messages
+
+## Performance Notes
+
+- Each model is approximately 4-7 GB in size
+- Models are downloaded sequentially during setup
+- Use \`/clear\` command in long conversations to manage memory
+- First response after loading a model may be slower
+
+## Security & Responsible Use
+
+- All models run locally without internet connectivity during inference
+- No data is sent to external servers
+- These are uncensored models - users are responsible for appropriate use
+- Follow local laws and regulations regarding AI usage
+
+## Troubleshooting
+
+**Ollama not found:**
+- Verify Ollama is installed: \`ollama --version\`
+- Check that Ollama is in your system PATH
+
+**Model not found:**
+- Run \`python setup_ollama.py\` again to download models
+- Check that OLLAMA_MODELS environment variable points to correct directory
+
+**Import errors:**
+- Ensure all \`.py\` files are in the same directory
+- Verify Python 3.7+ is installed: \`python --version\`
+
+**High memory usage:**
+- These models require 8-16 GB RAM
+- Close other applications if experiencing slowdowns
+- Use smaller models like Dolphin Mistral for lower memory usage
+
+## Contributing
+
+Contributions are welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch (\`git checkout -b feature/amazing-feature\`)
+3. Follow the code style in \`docs/DEVELOPMENT.md\`
+4. Test thoroughly with \`test_chat.py\`
+5. Commit your changes (\`git commit -m 'feat: add amazing feature'\`)
+6. Push to the branch (\`git push origin feature/amazing-feature\`)
+7. Open a Pull Request
 
 ## License
 
-This is a personal project for interfacing with Ollama. Ollama and the language models have their own licenses.
+This project is provided as-is for educational and research purposes. Users are responsible for compliance with applicable laws and Ollama's terms of service.
+
+## Acknowledgments
+
+- Built on [Ollama](https://github.com/ollama/ollama) - Local LLM runtime
+- Models by various creators in the open-source AI community
+
+## Support
+
+For issues and questions:
+- Open an issue on [GitHub](https://github.com/blackjackptit/uncensored-models/issues)
+- Check existing issues for solutions
+- Review \`docs/DEVELOPMENT.md\` for technical details
+
+---
+
+**Note**: This project facilitates running uncensored AI models. Use responsibly and in accordance with your local laws and ethical guidelines.
