@@ -21,63 +21,64 @@ from pathlib import Path
 # This path will be set as the OLLAMA_MODELS environment variable
 MODEL_DIR = Path("D:/llm-models")
 
-# Available uncensored models
+# UNCENSORED MODELS ONLY - No content restrictions
 # To add a new model, append to this list:
 # - 'name': The model identifier used by Ollama (e.g., from 'ollama pull <name>')
 # - 'description': Short description shown in model selection
 # - 'details': Additional details about capabilities or use cases
 #
-# Models organized by size/capability (your system has 48GB RAM - can run up to 70B models)
+# All models below are FULLY UNCENSORED with no content filtering
+# Your system has 48GB RAM - can run up to 70B models
 MODELS = [
-    # PREMIUM MODELS (Best Quality - Higher RAM required)
+    # PREMIUM UNCENSORED MODELS (Best Quality - Higher RAM required)
     {
         'name': 'dolphin-llama3:70b',
-        'description': 'Dolphin Llama3 70B',
+        'description': 'Dolphin Llama3 70B Uncensored',
         'details': 'BEST OVERALL - Highest quality, excellent reasoning (~40GB RAM)'
     },
     {
         'name': 'dolphin-mixtral:8x7b',
-        'description': 'Dolphin Mixtral 8x7B',
+        'description': 'Dolphin Mixtral 8x7B Uncensored',
         'details': 'EXCELLENT - Top reasoning & instruction following (~26GB RAM)'
     },
     {
         'name': 'dolphin-llama3:34b',
-        'description': 'Dolphin Llama3 34B',
+        'description': 'Dolphin Llama3 34B Uncensored',
         'details': 'HIGH QUALITY - Great balance of quality and speed (~20GB RAM)'
     },
 
-    # RECOMMENDED MODELS (Best Balance - Fast & Capable)
+    # RECOMMENDED UNCENSORED MODELS (Best Balance - Fast & Capable)
     {
         'name': 'dolphin-llama3:8b',
-        'description': 'Dolphin Llama3 8B',
-        'details': 'Best 8B model - High quality, fast responses (~8GB RAM)'
-    },
-    {
-        'name': 'wizardlm2:7b',
-        'description': 'WizardLM2 7B',
-        'details': 'Great for coding & complex instructions (~8GB RAM)'
+        'description': 'Dolphin Llama3 8B Uncensored',
+        'details': 'Best 8B uncensored model - High quality, fast responses (~8GB RAM)'
     },
     {
         'name': 'dolphin-mistral:7b',
-        'description': 'Dolphin Mistral 7B',
-        'details': 'Fast & reliable, good general purpose (~8GB RAM)'
+        'description': 'Dolphin Mistral 7B Uncensored',
+        'details': 'Fast & reliable uncensored model, excellent general purpose (~8GB RAM)'
+    },
+    {
+        'name': 'dolphin2.2-mistral:7b',
+        'description': 'Dolphin 2.2 Mistral 7B Uncensored',
+        'details': 'Refined uncensored version, excellent instruction following (~8GB RAM)'
     },
 
-    # SPECIALIZED MODELS
+    # CLASSIC UNCENSORED MODELS
     {
-        'name': 'nous-hermes2-mixtral:8x7b',
-        'description': 'Nous Hermes 2 Mixtral 8x7B',
-        'details': 'Creative writing & roleplay focused (~26GB RAM)'
+        'name': 'wizardlm-uncensored:13b',
+        'description': 'WizardLM Uncensored 13B',
+        'details': 'Classic uncensored model, great for instructions and tasks (~13GB RAM)'
     },
     {
-        'name': 'nous-hermes2:34b',
-        'description': 'Nous Hermes 2 34B',
-        'details': 'Creative conversations, versatile (~20GB RAM)'
+        'name': 'nous-hermes-llama2-uncensored:13b',
+        'description': 'Nous Hermes Llama2 Uncensored 13B',
+        'details': 'Reliable uncensored model, versatile and capable (~13GB RAM)'
     },
     {
-        'name': 'openhermes:7b',
-        'description': 'OpenHermes 7B',
-        'details': 'Precise instruction following, good for tasks (~8GB RAM)'
+        'name': 'orca2-uncensored:7b',
+        'description': 'Orca 2 Uncensored 7B',
+        'details': 'Fast uncensored model with good reasoning abilities (~8GB RAM)'
     }
 ]
 
